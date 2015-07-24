@@ -34,10 +34,12 @@ class MainClass
 {
 	public static void Main (string[] args)
 	{
+		/*
 		Assembly a = Assembly.LoadFrom ("SharpHsql.dll");
 		Console.WriteLine (a.CodeBase);
 		Assembly al = Assembly.LoadFrom ("SharpHsql.Linq.dll");
 		Console.WriteLine (al.CodeBase);
+		*/
 		using (var context = new SimpleContext ()) {
 			var person = new Person { 
 				FirstName = "Joe", 
@@ -89,4 +91,20 @@ DatabaseExists is not supported by the provider.
 */
 /*
 Unexpected connection state. When using a wrapping provider ensure that the StateChange event is implemented on the wrapped DbConnection.
+		http://stackoverflow.com/questions/28653352/entity-framework-unexpected-connection-state-exception
+*/
+/*
+		37000 Unexpected token: [ in statement [SELECT 
+			[GroupBy1].[A1] AS [C1]
+			FROM ( SELECT 
+				Count([Filter1].[A1]) AS [A1]
+				FROM ( SELECT 
+					1 AS [A1]
+					FROM [__MigrationHistory] AS [Extent1]
+					WHERE [Extent1].[ContextKey] = @'SimpleContext'
+				)  AS [Filter1]
+			)  AS [GroupBy1]]
+
+Table aliases are supported in HypersonicSQL DB starting from version 2.3
+C# port was forked from version 1.4 (so, it doesn't support table aliases)
 */
