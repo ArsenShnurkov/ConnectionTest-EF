@@ -38,9 +38,6 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="SharpHsql">
-      <HintPath>..\packages\SharpHSQL.1.0.3\lib\net40\SharpHSQL.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -48,7 +45,17 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SharpHSQL.git\src\SharpHSQL\SharpHsql.csproj">
+      <Project>{B98F7374-FF00-4BB7-93EC-39763A76BFFF}</Project>
+      <Name>SharpHsql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SharpHSQL.git\src\SharpHsql.Linq\SharpHsql.Linq.csproj">
+      <Project>{DEAFCB16-9BC4-4D3A-A850-C3B9423026C5}</Project>
+      <Name>SharpHsql.Linq</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
